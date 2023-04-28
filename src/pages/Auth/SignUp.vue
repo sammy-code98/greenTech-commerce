@@ -4,6 +4,9 @@
         <div class="text-center text-h4 text-font q-pb-md text-grey-7">
             Create an Account
         </div>
+        <div class="text-center text-font text-grey-7 text-subtitle1">
+            Few things can make you have a feeling of balablue in a town hall, get that feeling by creating an account today
+      </div>
         <q-card class="q-mt-xl" flat>
             <q-form class="q-gutter-md">
                 <q-input

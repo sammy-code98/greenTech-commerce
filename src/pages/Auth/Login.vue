@@ -6,9 +6,8 @@
             <div class="text-center text-h4  q-pb-md text-grey-7">
         Log In
       </div>
-      <div class="text-center text-font text-grey-7 text-subtitle1">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, placeat veritatis, vel minus rem ab excepturi deserunt sit,
-         eveniet sequi quibusdam dolor impedit quis reprehenderit dolore! Magnam blanditiis quaerat molestias.
+      <div class="text-center text-font text-grey-7 text-h6">
+     Hi, Welcome back 
       </div>
 <q-card class="q-mt-xl" flat>
     <q-form class="q-gutter-md">
