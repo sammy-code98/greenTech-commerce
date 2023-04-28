@@ -10,7 +10,14 @@
               <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
             </q-avatar>
             Dashboard
+          
           </q-toolbar-title>
+          <q-space/>
+          <div class="q-px-md">
+            <q-avatar>
+                <q-icon name="shopping_cart"/>
+            </q-avatar>
+          </div>
         </q-toolbar>
       </q-header>
   
@@ -18,7 +25,7 @@
         <q-scroll-area class="fit q-pt-md">
             <q-list>
                 <template v-for="(menuItem, index) in menuList" :key="index">
-                    <q-item clickable :active="menuItem.label === 'Profile'"  v-ripple>
+                    <q-item  class="q-pa-md" clickable :active="menuItem.label === 'Profile'"  v-ripple>
                         <q-item-section avatar>
                             <q-icon :name="menuItem.icon"/>
                         </q-item-section>
