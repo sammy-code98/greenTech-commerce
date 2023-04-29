@@ -57,15 +57,12 @@
   </template>
   
   <script lang='ts'>
-  import {defineComponent,  ref } from 'vue'
+  import { defineComponent,  ref } from 'vue'
   import ProfileCard from '../components/ProfileCard.vue'
+
   
   const menuList = [
-  // {
-  //   icon: 'person',
-  //   label: 'Profile',
-  //   separator: true
-  // },
+ 
   {
     icon: 'inventory_2',
     label: 'Product',
@@ -87,9 +84,12 @@
   ]
   
  export default defineComponent({
+
     name:"MainLayout",
     components:{ProfileCard},
     setup () {
+   
+
       const leftDrawerOpen = ref(false)
   
       return {
