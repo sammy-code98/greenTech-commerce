@@ -18,6 +18,13 @@
                 <q-icon name="shopping_cart"/>
             </q-avatar>
           </div>
+          <div class="q-px-sm">
+            <q-avatar class="cursor-pointer">
+              <img src="https://cdn.quasar.dev/img/avatar.png">
+
+           <profile-card/>
+            </q-avatar>
+          </div>
         </q-toolbar>
       </q-header>
   
@@ -25,7 +32,8 @@
         <q-scroll-area class="fit q-pt-md">
             <q-list>
                 <template v-for="(menuItem, index) in menuList" :key="index">
-                    <q-item  class="q-pa-md" clickable :active="menuItem.label === 'Profile'"  v-ripple>
+                  <router-link :to="menuItem.link" >
+                    <q-item  class="q-pa-md" clickable :active="menuItem.label === 'Product'"  v-ripple>
                         <q-item-section avatar>
                             <q-icon :name="menuItem.icon"/>
                         </q-item-section>
@@ -33,6 +41,8 @@
                         {{menuItem.label}}
                         </q-item-section>
                     </q-item>
+                  </router-link>
+                  
                     <q-seperator :key="'sep' + index" v-if="menuItem.separator"/>
                 </template>
             </q-list>
@@ -48,32 +58,37 @@
   
   <script lang='ts'>
   import {defineComponent,  ref } from 'vue'
+  import ProfileCard from '../components/ProfileCard.vue'
   
   const menuList = [
-  {
-    icon: 'person',
-    label: 'Profile',
-    separator: true
-  },
+  // {
+  //   icon: 'person',
+  //   label: 'Profile',
+  //   separator: true
+  // },
   {
     icon: 'inventory_2',
     label: 'Product',
-    separator: true
+    separator: true,
+    link:"/products"
   },
   {
     icon: 'sort_by_alpha',
     label: 'Order',
-    separator: true
+    separator: true,
+    link:"/orders"
   },
   {
     icon: 'rss_feed',
     label: 'Blog',
-    separator: true
+    separator: true,
+    link:"/blog"
   },
   ]
   
  export default defineComponent({
     name:"MainLayout",
+    components:{ProfileCard},
     setup () {
       const leftDrawerOpen = ref(false)
   
@@ -87,3 +102,10 @@
     }
  })
   </script>
+
+  <style scoped>
+   a{
+    text-decoration: none;
+    color: gray;
+   }
+</style>

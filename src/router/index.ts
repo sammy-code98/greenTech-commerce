@@ -34,6 +34,39 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/products",
+    component: () => import("../layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("../pages/Products/index.vue"),
+        name: "Products",
+      },
+    ],
+  },
+  {
+    path: "/orders",
+    component: () => import("../layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("../pages/Orders/Index.vue"),
+        name: "Orders",
+      },
+    ],
+  },
+  {
+    path: "/blog",
+    component: () => import("../layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("../pages/Blog/index.vue"),
+        name: "Blog",
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
