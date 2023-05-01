@@ -66,7 +66,7 @@ export const useAuthStore = defineStore("authStore", {
             this.user = data;
             this.logInStatus = status.DONE;
 
-            localStorage.setItem("userToken", data.token);
+            localStorage.setItem("accessToken", data.token);
 
             router.push("/products");
           });
