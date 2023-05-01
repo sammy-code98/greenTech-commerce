@@ -10,19 +10,33 @@ interface Iuser {
   phone: string;
   username: string;
 }
-interface LoginUser {
-  username: string;
-  password: string;
-}
 enum status {
   LOADING = "LOADING",
   DONE = "DONE",
   ERROR = "ERROR",
   IDLE = "IDLE",
 }
+
+interface Istate {
+  user: Iuser;
+  logInStatus: status;
+  signUpStatus: status;
+}
+interface LoginUser {
+  username: string;
+  password: string;
+}
+
 export const useAuthStore = defineStore("authStore", {
-  state: () => ({
-    user: null,
+  state: (): Istate => ({
+    user: {
+      email: "",
+      name: "",
+      password: "",
+      address: "",
+      phone: "",
+      username: "",
+    },
     logInStatus: status.IDLE,
     signUpStatus: status.IDLE,
   }),
@@ -73,6 +87,15 @@ export const useAuthStore = defineStore("authStore", {
       } catch (error) {
         console.log(error);
         this.logInStatus = status.ERROR;
+      }
+    },
+    // get user details
+    async getUser() {
+      try {
+        const Id = await axios.get("https://fakestoreapi.com/users/1");
+        this.user = Id.data;
+      } catch (error) {
+        console.log(error);
       }
     },
   },

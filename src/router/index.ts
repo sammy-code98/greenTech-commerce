@@ -46,13 +46,13 @@ const routes = [
     ],
   },
   {
-    path: "/orders",
+    path: "/cart",
     component: () => import("../layouts/MainLayout.vue"),
     children: [
       {
         path: "",
-        component: () => import("../pages/Orders/Index.vue"),
-        name: "Orders",
+        component: () => import("../pages/Cart/Index.vue"),
+        name: "Cart",
       },
     ],
   },

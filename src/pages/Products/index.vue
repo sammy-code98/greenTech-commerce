@@ -26,7 +26,6 @@
             </q-avatar>
           </q-td>
           <q-td v-for="col in props.cols" :key="col.name" :props="props">
-            <!-- {{ col.value }} -->
             {{ col.name ==='description' ? shrinkDescription(col.value,20) : col.value }}
 
           </q-td>
@@ -89,9 +88,7 @@ export default defineComponent({
     productStore.fetchProducts();
 
     // trim description text
-
     function shrinkDescription(str: { length: number; slice: (arg0: number, arg1: number) => string; },n: number ){
-
         return (str.length > n) ? str.slice(0, n -1) + "..." : str
     }
 

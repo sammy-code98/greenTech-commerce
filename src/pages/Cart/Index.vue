@@ -1,6 +1,6 @@
 <template>
  <div class="row q-mt-md q-px-xl ">
-        <div class="text-h4 text-grey-7">Orders</div>  
+        <div class="text-h4 text-grey-7">Cart Items</div>  
     </div>
     <div class="q-mt-xl q-pa-md">
         <q-table 
