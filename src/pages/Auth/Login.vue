@@ -1,22 +1,18 @@
 <template>
-    <div class="row justify-center">
-
-        <div class="col-md-6 col-xs-10 q-mt-xl">
-
-            <div class="text-center text-h4  q-pb-md text-grey-7">
-        Log In
-      </div>
+  <div class="row justify-center">
+    <div class="col-md-6 col-xs-10 q-mt-xl">
+      <div class="text-center text-h4 q-pb-md text-grey-7">Log In</div>
       <div class="text-center text-font text-grey-7 text-h6">
-     Hi, Welcome back 
+        Hi, Welcome back
       </div>
-<q-card class="q-mt-xl" flat>
-    <q-form class="q-gutter-md">
+      <q-card class="q-mt-xl" flat>
+        <q-form class="q-gutter-md" @submit.prevent="Login">
           <q-input
             outlined
-            v-model="email"
+            v-model="username"
             class="text-font text-subtitle1"
-            type="email"
-            placeholder="Enter your Email Address"
+            type="text"
+            placeholder="Enter your UserName"
             lazy-rules
             :rules="[
               (val) => (val && val.length > 0) || 'Please type something',
@@ -42,7 +38,9 @@
               />
             </template>
           </q-input>
-          <div   class="text-right text-font text-primary text-weight-meduim text-subtitle2">
+          <div
+            class="text-right text-font text-primary text-weight-meduim text-subtitle2"
+          >
             Forgot Password?
           </div>
           <div>
@@ -53,46 +51,55 @@
               dense
               type="submit"
               color="primary"
-              :loading="submitting"
+              :loading="authStore.logInStatus === 'LOADING'"
             >
               <template v-slot:loading>
                 <q-spinner-facebook />
               </template>
             </q-btn>
           </div>
-
-    </q-form>
-</q-card>
-<div class="q-mt-xl text-center text-grey-7 text-font text-subtitle2">
-    Don't have an account yet?
-    <router-link to="/sign-up">
-        <span class="text-primary">Create Account</span>
-    </router-link>
-</div>
+        </q-form>
+      </q-card>
+      <div class="q-mt-xl text-center text-grey-7 text-font text-subtitle2">
+        Don't have an account yet?
+        <router-link to="/sign-up">
+          <span class="text-primary">Create Account</span>
+        </router-link>
+      </div>
     </div>
-
-    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref} from 'vue'
-
-
+import { defineComponent, ref } from "vue";
+import { useAuthStore } from "../../stores/AuthStore";
 export default defineComponent({
-    setup() {
-        const email = ref("")
-        const password = ref("")
-        const submitting = ref(false)
+  setup() {
+    const username = ref("");
+    const password = ref("");
+    const submitting = ref(false);
+    const authStore = useAuthStore();
 
-        return {
-        email,
-        password,
-        isPwd: ref(true),
-        submitting
-
+    // login function
+    async function Login() {
+      try {
+        await authStore.loginUser({
+          username: username.value,
+          password: password.value,
+        })
+      } catch (error) {
+        console.log(error);
+      }
     }
-        
-    },
-    
-})
+
+    return {
+      username,
+      password,
+      isPwd: ref(true),
+      submitting,
+      Login,
+      authStore,
+    };
+  },
+});
 </script>
