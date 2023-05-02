@@ -4,11 +4,9 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title>
-          GreenTechCommerce
-        </q-toolbar-title>
+        <q-toolbar-title> GreenTechCommerce </q-toolbar-title>
         <q-space />
-        
+
         <div class="q-px-sm">
           <q-avatar class="cursor-pointer" color="white" text-color="primary">
             {{ auth.user.username[0] }}
@@ -41,9 +39,8 @@
             <q-seperator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
         </q-list>
-        <div class="row flex justify-start q-pa-md fixed-bottom ">
+        <div class="row flex justify-start q-pa-md fixed-bottom">
           <q-btn color="primary" label="LogOut" @click="auth.logOut" />
-
         </div>
       </q-scroll-area>
     </q-drawer>

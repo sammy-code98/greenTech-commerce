@@ -88,7 +88,6 @@ export default defineComponent({
         
         // add product
      function addProduct(){
-        console.log("ok")
         productStore.addProduct({
             title:title.value,
             description:desc.value,

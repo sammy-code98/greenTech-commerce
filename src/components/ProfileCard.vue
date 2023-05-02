@@ -25,7 +25,6 @@ export default defineComponent({
         return { auth}
      }
 })
-
 </script>
 
 
