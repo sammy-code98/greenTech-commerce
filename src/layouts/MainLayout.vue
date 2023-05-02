@@ -11,11 +11,7 @@
           Dashboard
         </q-toolbar-title>
         <q-space />
-        <div class="q-px-md">
-          <q-avatar>
-            <q-icon name="shopping_cart" />
-          </q-avatar>
-        </div>
+        
         <div class="q-px-sm">
           <q-avatar class="cursor-pointer" color="white" text-color="primary">
             {{ auth.user.username[0] }}
@@ -74,12 +70,6 @@ const menuList = [
     label: "Cart",
     separator: true,
     link: "/cart",
-  },
-  {
-    icon: "rss_feed",
-    label: "Blog",
-    separator: true,
-    link: "/blog",
   },
 ];
 

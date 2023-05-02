@@ -24,17 +24,6 @@ const routes = [
     ],
   },
   {
-    path: "/dashboard",
-    component: () => import("../layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("../pages/Dashboard/Dashboard.vue"),
-        name: "Dashboard",
-      },
-    ],
-  },
-  {
     path: "/products",
     component: () => import("../layouts/MainLayout.vue"),
     children: [
@@ -53,17 +42,6 @@ const routes = [
         path: "",
         component: () => import("../pages/Cart/Index.vue"),
         name: "Cart",
-      },
-    ],
-  },
-  {
-    path: "/blog",
-    component: () => import("../layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("../pages/Blog/index.vue"),
-        name: "Blog",
       },
     ],
   },

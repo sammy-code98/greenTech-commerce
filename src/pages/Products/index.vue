@@ -1,7 +1,11 @@
 <template>
-  <div class="row q-mt-md q-px-xl">
+  <div class="flex row  justify-between q-mt-md q-px-xl">
     <div class="text-h4 text-grey-7">Products</div>
+    <div class="q-mt-xl">
+<add-product/>
+    </div>
   </div>
+
   <div class="q-mt-xl q-pa-md">
     <q-table
       title="Treats"
@@ -30,13 +34,7 @@
 
           </q-td>
         </q-tr>
-        <q-tr v-show="props.expand" :props="props">
-          <q-td colspan="100%">
-            <div class="text-left">
-              This is expand slot for row above: {{ props.row.name }}.
-            </div>
-          </q-td>
-        </q-tr>
+      
       </template>
     </q-table>
   </div>
@@ -45,6 +43,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useProductStore } from "../../stores/ProductStore";
+import AddProduct from "../../components/AddProduct.vue";
 
 const columns = [
   {
@@ -83,6 +82,9 @@ const columns = [
 ];
 
 export default defineComponent({
+  components:{
+    AddProduct
+  },
   setup() {
     const productStore = useProductStore();
     productStore.fetchProducts();
