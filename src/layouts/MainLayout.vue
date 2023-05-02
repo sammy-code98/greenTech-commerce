@@ -41,6 +41,10 @@
             <q-seperator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
         </q-list>
+        <div class="row flex justify-start q-pa-md fixed-bottom ">
+          <q-btn color="primary" label="LogOut" @click="auth.logOut" />
+
+        </div>
       </q-scroll-area>
     </q-drawer>
 
