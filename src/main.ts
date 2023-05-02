@@ -7,6 +7,7 @@
 
 import { createApp } from "vue";
 import { Quasar } from "quasar";
+
 // import "./style.css";
 
 // Import icon libraries
@@ -20,6 +21,8 @@ import "quasar/src/css/index.sass";
 // and placed in same folder as main.js
 import App from "./App.vue";
 import router from "./router";
+import { createPinia } from "pinia";
+
 
 const myApp = createApp(App);
 
@@ -40,4 +43,4 @@ myApp.use(Quasar, {
 });
 
 // Assumes you have a <div id="app"></div> in your index.html
-myApp.use(router).mount("#app");
+myApp.use(router).use(createPinia()).mount("#app");
