@@ -9,11 +9,8 @@
                 <div class="text-h6 text-grey-7 text-center font-bold" >{{auth.user.username }}</div>
             <div class="text-subtitle2 text-grey-7 text-center">{{ auth.user.email }}</div>
             </div>
-          
         </q-card-section>
-      
     </q-card>
-  
 </q-menu>
 </template>
 
@@ -25,10 +22,7 @@ export default defineComponent({
     setup(){
         const auth = useAuthStore()
         auth.getUser()
-
-        return {
-            auth
-        }
+        return { auth}
      }
 })
 
