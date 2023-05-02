@@ -98,5 +98,13 @@ export const useAuthStore = defineStore("authStore", {
         console.log(error);
       }
     },
+    async logOut() {
+      try {
+        localStorage.removeItem("accessToken");
+        router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 });
