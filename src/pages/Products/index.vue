@@ -9,7 +9,7 @@
 
   <div class="q-mt-xl q-pa-md">
     <q-table
-      :rows="productStore.getProducts"      
+      :rows="getProducts"      
       :columns="columns"
       row-key="name"
     >
@@ -41,8 +41,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 import { QTableColumn } from 'quasar'
+import { storeToRefs } from 'pinia'
 import { useProductStore } from "../../stores/ProductStore";
 import AddProduct from "../../components/AddProduct.vue";
 
@@ -87,7 +88,10 @@ export default defineComponent({
     AddProduct
   },
   setup() {
+    const { getProducts } = storeToRefs(useProductStore())
+
     const productStore = useProductStore();
+ 
     productStore.fetchProducts();
 
     // trim description text
@@ -98,6 +102,7 @@ export default defineComponent({
     return {
       columns,
       productStore,
+      getProducts,
       shrinkDescription
     };
   },

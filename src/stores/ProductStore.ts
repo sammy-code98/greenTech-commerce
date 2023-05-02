@@ -1,9 +1,19 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 
-
+interface Iproduct {
+  title: string;
+  description: string;
+  price: string;
+  catergory: string;
+  image: string;
+}
+interface IState {
+  products: Iproduct[];
+  cart: { id: string; products: { productId: string; quantity: string }[] };
+}
 export const useProductStore = defineStore("productStore", {
-  state: () => ({
+  state: (): IState => ({
     products: [],
     cart: {
       id: "",
@@ -14,7 +24,6 @@ export const useProductStore = defineStore("productStore", {
         },
       ],
     },
-    newCart: {},
   }),
   getters: {
     getProducts(state) {
@@ -26,22 +35,17 @@ export const useProductStore = defineStore("productStore", {
   },
   actions: {
     async fetchProducts() {
-      console.log("called");
       try {
         const productData = await axios.get(
           "https://fakestoreapi.com/products"
         );
-
         this.products = productData.data;
-        console.log(this.products);
       } catch (error) {
         console.log(error);
       }
     },
 
     async getCartProducts() {
-      console.log("called");
-
       try {
         const cartData = await axios.get("https://fakestoreapi.com/carts/1");
         this.cart = cartData.data;
@@ -51,12 +55,28 @@ export const useProductStore = defineStore("productStore", {
       }
     },
     async deleteCartProduct(productId: string) {
-      console.log("called delete");
       try {
         this.cart.products = this.cart.products.filter((obj) => {
           alert("item deleted");
           return obj.productId !== productId;
         });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async addProduct(product: Iproduct) {
+      try {
+        await axios
+          .post("https://fakestoreapi.com/products", {
+            title: product.title,
+            price: product.price,
+            description: product.description,
+            category: product.catergory,
+            image: product.image,
+          })
+          .then(({ data }) => {
+            this.products.unshift({ ...data, rating: { rate: 0, count: 0 } });
+          });
       } catch (error) {
         console.log(error);
       }

@@ -7,7 +7,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-            <q-form class="q-gutter-md">
+            <q-form class="q-gutter-md" @submit.prevent="addProduct">
                 <q-input
             outlined
             v-model="title"
@@ -63,12 +63,9 @@
               (val) => (val && val.length > 0) || 'Please type something',
             ]"
           />
+          <q-btn flat label="Add Product" type="submit" color="primary" v-close-popup />
             </q-form>
         </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Add Product" type="submit" color="primary" v-close-popup />
-        </q-card-actions>
       </q-card>
     </q-dialog>
 
@@ -79,6 +76,7 @@
 
 <script lang="ts">
 import { defineComponent ,ref} from 'vue';
+import { useProductStore } from '../stores/ProductStore';
 export default defineComponent({
     setup(){
         const title = ref("")
@@ -86,13 +84,29 @@ export default defineComponent({
         const desc = ref("")
         const image = ref("")
         const cat = ref("")
+        const productStore = useProductStore()
+        
+        // add product
+     function addProduct(){
+        console.log("ok")
+        productStore.addProduct({
+            title:title.value,
+            description:desc.value,
+            image:image.value,
+            catergory:cat.value,
+            price:price.value
+        })
+     }
+
         return {
             alert:ref(false),
             title,
             price,
             desc,
             image,
-            cat
+            cat,
+            productStore,
+            addProduct
         }
     }
 })
