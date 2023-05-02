@@ -49,7 +49,6 @@ export const useProductStore = defineStore("productStore", {
       try {
         const cartData = await axios.get("https://fakestoreapi.com/carts/1");
         this.cart = cartData.data;
-        console.log(this.cart);
       } catch (error) {
         console.log(error);
       }

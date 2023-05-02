@@ -56,7 +56,6 @@ export const useAuthStore = defineStore("authStore", {
             username: user.username,
           })
           .then(({ data }) => {
-            console.log({ data });
             this.user = data;
             this.signUpStatus = status.DONE;
             router.push("/");
@@ -76,12 +75,9 @@ export const useAuthStore = defineStore("authStore", {
             password: user.password,
           })
           .then(({ data }) => {
-            console.log(data);
             this.user = data;
             this.logInStatus = status.DONE;
-
             localStorage.setItem("accessToken", data.token);
-
             router.push("/products");
           });
       } catch (error) {
