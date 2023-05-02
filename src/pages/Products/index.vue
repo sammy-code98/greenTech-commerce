@@ -1,3 +1,4 @@
+
 <template>
   <div class="flex row  justify-between q-mt-md q-px-xl">
     <div class="text-h4 text-grey-7">Products</div>
@@ -8,8 +9,7 @@
 
   <div class="q-mt-xl q-pa-md">
     <q-table
-      title="Treats"
-      :rows="productStore.getProducts"
+      :rows="productStore.getProducts"      
       :columns="columns"
       row-key="name"
     >
@@ -42,10 +42,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { QTableColumn } from 'quasar'
 import { useProductStore } from "../../stores/ProductStore";
 import AddProduct from "../../components/AddProduct.vue";
 
-const columns = [
+const columns : QTableColumn[] = [
   {
     name: "title",
     required: true,
